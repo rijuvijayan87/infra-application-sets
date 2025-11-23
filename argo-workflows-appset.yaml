@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argo-workflows-appset
+spec:
+  generators:
+  - list:
+      elements:
+        - name: argo-workflows
+  template:
+    metadata:
+      name: '{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/rijuvijayan87/helm-repo-argo-workflows.git
+        targetRevision: HEAD
+        path: .
+        helm:
+          releaseName: '{{name}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy: {}
