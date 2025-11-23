@@ -5,7 +5,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/rijuvijayan87/infra-application-sets.git # TODO: replace with your git repo URL
+      repoURL: https://github.com/rijuvijayan87/helm-repo-node-api-container.git
       revision: HEAD
       directories:
       - path: helm-repo-node-api-container/*
@@ -15,7 +15,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/rijuvijayan87/infra-application-sets.git # TODO: replace with your git repo URL
+        repoURL: https://github.com/rijuvijayan87/helm-repo-node-api-container.git
         targetRevision: HEAD
         path: '{{path}}'
         helm:
