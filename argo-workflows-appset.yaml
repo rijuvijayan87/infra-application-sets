@@ -20,5 +20,5 @@ spec:
           releaseName: '{{name}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: default
+        namespace: argo-workflows
       syncPolicy: {}
