@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: node-api-appset
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/rijuvijayan87/infra-application-sets.git # TODO: replace with your git repo URL
+      revision: HEAD
+      directories:
+      - path: helm-repo-node-api-container/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/rijuvijayan87/infra-application-sets.git # TODO: replace with your git repo URL
+        targetRevision: HEAD
+        path: '{{path}}'
+        helm:
+          releaseName: '{{path.basename}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
