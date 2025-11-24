@@ -22,3 +22,4 @@ spec:
         server: https://kubernetes.default.svc
         namespace: node-api
       syncPolicy:
+        automated: {}
